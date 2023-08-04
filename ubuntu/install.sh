@@ -3,7 +3,7 @@
 # Script to configure oh-my-zsh on Ubuntu Virtual Machine
 # 
 # This script can be run using curl:
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" ${HOST_NAME}
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/ubuntu/install.sh)" "" ${HOST_NAME}
 #
 # Plugins to add into .zshrc config
 #
@@ -79,7 +79,7 @@ EOF
 
 main() {
 
-    if [ ! -t 0]; then
+    if [ ! -t 0 ]; then
         HOST_NAME=$HOST
     else
         HOST_NAME=$1
