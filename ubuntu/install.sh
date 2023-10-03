@@ -52,9 +52,12 @@ intsall_ohmyzsh() {
     message "Install oh-my-zsh plugin: zsh-syntax-highlighting"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-    # Setup .zshrc config file to add desired plugins
+    # Setup .zshrc config file
+    # Activate plugins
     echo "Set plugins: ${PLUGINS}"
     sed -i "s/^plugins=(.*/plugins=(${PLUGINS})/g" .zshrc
+    # Set zsh command prompt to use kube-ps1 plugin
+    grep -qxF "PROMPT='\$(kube_ps1) '\$PROMPT" .zshrc || sed -i "78 i PROMPT='\$(kube_ps1) '\$PROMPT" .zshrc 
 
     # Change default shell session for the user to use zsh prompt
     echo "Set shell in /etc/passwd"
