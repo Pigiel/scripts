@@ -106,7 +106,7 @@ install_kubectx() {
     chmod -R 755 ~/.oh-my-zsh/custom/completions
     ln -s /opt/kubectx/completion/_kubectx.zsh ~/.oh-my-zsh/custom/completions/_kubectx.zsh
     ln -s /opt/kubectx/completion/_kubens.zsh ~/.oh-my-zsh/custom/completions/_kubens.zsh
-    grep -gxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || sed -i "79 i fpath=(\$ZSH/custom/completions \$fpath)" .zshrc
+    grep -qxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || sed -i "79 i fpath=(\$ZSH/custom/completions \$fpath)" .zshrc
 }
 
 main() {
