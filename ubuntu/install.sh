@@ -89,6 +89,26 @@ EOF
     sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"robbyrussell.custom\"/g" .zshrc
 }
 
+install_kubectx() {
+    # kubectx + kubens: Power tools for kubectl
+    #   https://github.com/ahmetb/kubectx
+    #
+    # kubectx is a tool to switch between contexts (clusters) on kubectl faster.
+    # kubens is a tool to switch between Kubernetes namespaces (and configure them for kubectl) easily.
+    #
+    message "Install ahmetb/kubectx"
+    sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+    sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+    sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+    message "Configure completion scrips for plain zsh"
+    mkdir -p ~/.oh-my-zsh/custom/completions
+    chmod -R 755 ~/.oh-my-zsh/custom/completions
+    ln -s /opt/kubectx/completion/_kubectx.zsh ~/.oh-my-zsh/custom/completions/_kubectx.zsh
+    ln -s /opt/kubectx/completion/_kubens.zsh ~/.oh-my-zsh/custom/completions/_kubens.zsh
+    grep -gxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || sed -i "79 i fpath=(\$ZSH/custom/completions \$fpath)" .zshrc
+}
+
 main() {
 
     if [ ! -t 0 ]; then
@@ -100,6 +120,7 @@ main() {
     update_packages
     install_package zsh
     intsall_ohmyzsh
+    install_kubectx
 
     # Install custom theme if HOST_NAME is provided as script argument
     if [ "$CUSTOM_THEME" = true ]; then
