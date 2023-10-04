@@ -107,6 +107,7 @@ install_kubectx() {
     ln -s /opt/kubectx/completion/_kubectx.zsh ~/.oh-my-zsh/custom/completions/_kubectx.zsh
     ln -s /opt/kubectx/completion/_kubens.zsh ~/.oh-my-zsh/custom/completions/_kubens.zsh
     grep -qxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || sed -i "79 i fpath=(\$ZSH/custom/completions \$fpath)" .zshrc
+    grep -qxF "autoload -U compinit && compinit" .zshrc || sed -i "80 i autoload -U compinit && compinit" .zshrc
 }
 
 main() {
