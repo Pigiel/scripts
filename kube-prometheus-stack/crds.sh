@@ -6,7 +6,10 @@
 #  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)" "" ${VERSION}
 
 if [ -z "$1" ]; then
-  echo "No version provided"
+  echo "No CRD version provided"
+  echo "Usage: crds.sh <version>"
+  echo "Example:"
+  echo "  sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)\" \"\" 0.79.0"
   exit 1
 fi
 
