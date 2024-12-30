@@ -1,15 +1,20 @@
-# Script to automate the installation of the CRDs for the kube-prometheus-stack
-# More information on the kube-prometheus-stack can be found at:
-# https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+#!/bin/sh
 #
 # This script can be run using curl:
 #  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)" "" ${VERSION}
+#
+# Script to automate the installation of the CRDs for the kube-prometheus-stack
+# More information on the kube-prometheus-stack can be found at:
+#   https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+#
 
+# Check if CRD version is provided
 if [ -z "$1" ]; then
   echo "No CRD version provided"
-#   echo "Usage: crds.sh <version>"
-#   echo "Example:"
-#   echo "  sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)\" \"\" 0.79.0"
+  echo "Usage:"
+  echo "  sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)\" \"\" <version>"
+  echo "Example:"
+  echo "  sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)\" \"\" 0.79.0"
   exit 1
 fi
 
