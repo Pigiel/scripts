@@ -3,7 +3,7 @@
 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
 #
 # This script can be run using curl:
-#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)" ${VERSION}
+#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)" "" "${VERSION}"
 
 # Operator Version
 # VERSION="0.79.0"
