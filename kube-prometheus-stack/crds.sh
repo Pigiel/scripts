@@ -5,14 +5,14 @@
 # This script can be run using curl:
 #  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/kube-prometheus-stack/crds.sh)" "" ${VERSION}
 
-# Operator Version
-# VERSION="0.79.0"
-VERSION="$1"
-
-if [ -z "$VERSION" ]; then
+if [ -z "$1" ]; then
   echo "No version provided"
   exit 1
 fi
+
+# Operator Version
+# VERSION="0.79.0"
+VERSION="$1"
 
 # Remove the existing CRDs
 echo "Removing existing CRDs"
