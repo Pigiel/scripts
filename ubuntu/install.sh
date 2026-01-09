@@ -127,6 +127,13 @@ install_kubectx() {
     sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
     sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
+    # Remove everything from the cloned kubectx repo except kubectx and kubens shell scripts and completion directory
+    sudo sh -c 'cd /opt/kubectx && find . -mindepth 1 -maxdepth 1 \
+      ! -name kubectx \
+      ! -name kubens \
+      ! -name completion \
+      -exec rm -rf {} +'
+
     section "Configure completion scrips for plain zsh"
     info "Create directory: ~/.oh-my-zsh/custom/completions"
     mkdir -p ~/.oh-my-zsh/custom/completions
