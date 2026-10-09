@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 #
 # Script to configure oh-my-zsh on Ubuntu Virtual Machine
-# 
+#
 # This script can be run using curl:
 #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/ubuntu/install.sh)" "" ${HOST_NAME}
 #
@@ -83,7 +83,8 @@ intsall_ohmyzsh() {
     info "Set plugins: ${PLUGINS}"
     sed -i "s/^plugins=(.*/plugins=(${PLUGINS})/g" .zshrc
     # Set zsh command prompt to use kube-ps1 plugin
-    grep -qxF "PROMPT='\$(kube_ps1) '\$PROMPT" .zshrc || sed -i "78 i PROMPT='\$(kube_ps1) '\$PROMPT" .zshrc 
+    grep -qxF "PROMPT='\$(kube_ps1) '\$PROMPT" .zshrc || echo "PROMPT='\$(kube_ps1) '\$PROMPT" >> .zshrc
+
 
     # Change default shell session for the user to use zsh prompt
     info "Set shell in /etc/passwd"
@@ -142,8 +143,8 @@ install_kubectx() {
     ln -s /opt/kubectx/completion/_kubectx.zsh ~/.oh-my-zsh/custom/completions/_kubectx.zsh
     ln -s /opt/kubectx/completion/_kubens.zsh ~/.oh-my-zsh/custom/completions/_kubens.zsh
     info "Setup .zshrc"
-    grep -qxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || sed -i "79 i fpath=(\$ZSH/custom/completions \$fpath)" .zshrc
-    grep -qxF "autoload -U compinit && compinit" .zshrc || sed -i "80 i autoload -U compinit && compinit" .zshrc
+    grep -qxF "fpath=(\$ZSH/custom/completions \$fpath)" .zshrc || echo "fpath=(\$ZSH/custom/completions \$fpath)" >> .zshrc
+    grep -qxF "autoload -U compinit && compinit" .zshrc || echo "autoload -U compinit && compinit" >> .zshrc
 }
 
 main() {
