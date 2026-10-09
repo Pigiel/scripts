@@ -5,6 +5,10 @@
 # This script can be run using curl:
 #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Pigiel/scripts/main/ubuntu/proxy.sh)"
 #
+# Before running the script export socks5 proxy environment variables:
+#   export HTTP_PROXY="socks5h://127.0.0.1:1080"
+#   export HTTPS_PROXY="socks5h://127.0.0.1:1080"
+#
 # Kubelogin version to install
 #
 KUBELOGIN_VERSION="v0.2.20"
@@ -79,4 +83,4 @@ main() {
   remove_apt_proxy
 }
 
-main "$@
+main "$@"
