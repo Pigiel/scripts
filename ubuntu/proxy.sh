@@ -50,8 +50,8 @@ info() {
 
 set_apt_proxy() {
   header "Setting APT proxy: $SOCKS_PROXY_CONF"
-  sudo echo "Acquire::http::Proxy \"socks5h://127.0.0.1:1080/\";" >> "$SOCKS_PROXY_CONF"
-  sudo echo "Acquire::https::Proxy \"socks5h://127.0.0.1:1080/\";" >> "$SOCKS_PROXY_CONF"
+  echo 'Acquire::http::Proxy "socks5h://127.0.0.1:1080/";' | sudo tee -a "$SOCKS_PROXY_CONF"
+  echo 'Acquire::https::Proxy "socks5h://127.0.0.1:1080/";' | sudo tee -a "$SOCKS_PROXY_CONF"
   cat "$SOCKS_PROXY_CONF"
 }
 
